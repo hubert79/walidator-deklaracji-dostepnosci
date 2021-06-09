@@ -3,7 +3,96 @@ $htmlContent = file_get_contents("https://testy.lepszyweb.pl/deklaracja-dostepno
 
 # echo '<textarea cols="100" rows="100">'.$htmlContent.'</textarea>';
 
-# funcion znajdź($hc, $ay){
+# Wstęp 
+$num = "";
+$num = stripos($htmlContent, "a11y-wstep");
+
+if($num != ""){
+	
+	$ca = substr($htmlContent,$num, 1);
+
+	$akt = "";
+	$flaga = "false";
+
+	while($flaga == "false"){
+		$cut = substr($htmlContent,$num, 1);
+		$akt .= $cut;
+		if($cut == "/" /*chr(60)*/){
+			$flaga = "true";
+		} else {
+			$flaga = "false";
+			$num += 1;
+		}
+	
+	}
+	$s = strpos($akt, ">");
+	$k = strRpos($akt, "<");
+
+	$od = $s + 1;
+	$ile = $k - $s - 1;
+	
+	echo substr($akt, $od, $ile)."<br>";
+}
+
+
+# Data publikacja 
+	$num = stripos($htmlContent, "a11y-data-publikacja");
+
+	$ca = substr($htmlContent,$num, 1);
+
+	$akt = "";
+	$flaga = "false";
+
+	while($flaga == "false"){
+		$cut = substr($htmlContent,$num, 1);
+		$akt .= $cut;
+		if($cut == "/" /*chr(60)*/){
+			$flaga = "true";
+		} else {
+			$flaga = "false";
+			$num += 1;
+		}
+	
+	}
+	$s = strpos($akt, ">");
+	$k = strRpos($akt, "<");
+
+	$od = $s + 1;
+	$ile = $k - $s - 1;
+	
+	echo substr($akt, $od, $ile)."<br>";
+ 
+
+# Data aktualizacja
+
+	$num = stripos($htmlContent, "a11y-data-aktualizacja");
+
+	$ca = substr($htmlContent,$num, 1);
+
+	$akt = "";
+	$flaga = "false";
+
+	while($flaga == "false"){
+		$cut = substr($htmlContent,$num, 1);
+		$akt .= $cut;
+		if($cut == "/" /*chr(60)*/){
+			$flaga = "true";
+		} else {
+			$flaga = "false";
+			$num += 1;
+		}
+	
+	}
+	$s = strpos($akt, ">");
+	$k = strRpos($akt, "<");
+
+	$od = $s + 1;
+	$ile = $k - $s - 1;
+	
+	echo substr($akt, $od, $ile)."<br>";
+ 
+
+# Status 
 	$num = stripos($htmlContent, "a11y-status");
 
 	$ca = substr($htmlContent,$num, 1);
@@ -28,10 +117,6 @@ $htmlContent = file_get_contents("https://testy.lepszyweb.pl/deklaracja-dostepno
 	$od = $s + 1;
 	$ile = $k - $s - 1;
 	
-	echo substr($akt, $od, $ile);
-# }
-
-#	znajdź($htmlContent,"a11y-Status");
-
+	echo substr($akt, $od, $ile)."<br>";
 
 ?>
